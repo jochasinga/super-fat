@@ -16,4 +16,14 @@ Requirements
 + [Arduino](http://arduino.cc/ "Arduino") for the toy
 + [Cellv1.0](http://www.sparqee.com/portfolio/sparqee-cell/ "Sparqee Cellv1.0") for 3G communication
 
+Instructions
+============
+
+## Chat App ##
+
+1. Install Meteor via your commandline  `$ curl https://install.meteor.com/ | sh`
+2. Inside `super-fat/chatapp/` type `meteor run` to run the app
+3. Open your browser and go to `http://localhost:3000/`
+
+It's also a good idea to install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/ "Node Packaging Manager")
 
