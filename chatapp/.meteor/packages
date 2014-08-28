@@ -8,5 +8,5 @@ autopublish
 insecure
 coffeescript
 accounts-ui
-accounts-github
+accounts-password
 
