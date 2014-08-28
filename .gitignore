@@ -1,0 +1,7 @@
+### For Meteor ###
+.meteor/local
+.meteor/meteorite
+
+### For other backup ###
+*~
+*#
