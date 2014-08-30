@@ -4,6 +4,11 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-coffeescript
-accounts-ui
-accounts-password
+cmather:iron-router@0.8.2
+mrt:livestamp-hs@0.0.33
+accounts-twitter
+random
+mrt:iron-router-auth@0.2.1
+mrt:accounts-ui-bootstrap-3-blaze@0.3.10
+mizzao:bootstrap-3
+
