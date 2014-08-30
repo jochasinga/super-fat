@@ -27,13 +27,31 @@ Instructions
 
 It's also a good idea to install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/ "Node Packaging Manager"), since Meteor runs on top of Node.
 
+### Distributed Data Protocol (DDP) ###
+
+This is the protocol used by Meteor. Read more [here](https://meteorhacks.com/introduction-to-ddp.html "DDP"). It's simple JSON client-server I/O. There's a simple tool to track a Meteor app's DDP messages in real-time called [DDP-analyzer](https://github.com/arunoda/meteor-ddp-analyzer "DDP-analyzer by Arunoda"). Here's how to use:
+
+1. install DDP analyzer from npm - `sudo npm install -g ddp-analyzer`
+2. start the proxy server - `ddp-analyzer-proxy`
+3. `cd` to the meteor app directory and start the app as shown below
+
+apply these commands in the terminal console
+
+```bash
+
+export DDP_DEFAULT_CONNECTION_URL=http://localhost:3030
+meteor
+```
 ---------------------------------------
 
 Updates & Progress
 ------------------
 
-**08/09/14:**
+**08/28/14:**
 After two days catching up, I decided to leave **Famo.us** out of this project unless there's time left to implement it to other mobile devices. It's a shame but the chat client is just a part of this project, and the most important thing is the _proof of concept_ and MVP.
+
+**08/29/14:**
+The chat app is done (pretty) much. Plan is to get rid of all the routes and make it single-paged with the chat box right on the home page for easy demo. I have  done some studies on Meteor's DDP (Distributed Data Protocol). It's simple JSON I/O. Wonder if that could be easy enough to communicate with the Arduino.
 
 
 
