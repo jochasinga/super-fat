@@ -5,10 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+//Setting the Port
+var PORT = 3000
+
+// socket io listening port
+server.listen(PORT);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +64,22 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(3000);
+//Socket iop code
+var activeClients = 0;
+
+// on connection
+io.sockets.on('connection', function(socket){
+  activeClients++;
+  io.sockets.emit('message', {clients: activeClients});
+  console.log("Someone connected!");
+
+  // on disconnect
+  socket.on('disconnect', function(data){
+    activeClients--;
+    io.sockets.emit('message', {clients: activeClients});
+  });
+});
+
+//app.listen(3000);
 console.log("Express server listening on port %d", 3000);
 module.exports = app;

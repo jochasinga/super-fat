@@ -7,6 +7,16 @@ Book
     JavaScript programming: Pushing the limits by Jon Raasch
 
 
+npm packages used:
+------------------
+
+    express
+    express-generator
+    nodemon
+    ejs
+    socket.io (not used yet)
+    jsdocs (not used yet)
+
 Basic file Structure
 --------------------
 
@@ -17,8 +27,12 @@ Basic file Structure
     Step 3: express <name_of_app>
     Step 4: npm install
 
+    Note: Before running the app, go into app.js and set the port
+
     For more information see the following tutorial:
     (http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+
+    Note: When running the app, use nodemon app.js over node.js (https://github.com/remy/nodemon)
 
 
 Changing the template engine to EJS
@@ -34,5 +48,10 @@ Changing the template engine to EJS
             1. <% %>  - to execute some code
             2. <%= %> - to print some value in templates
             Note: it seems identical to Underscore.js templating
+
+Socket.io with Express 4
+-------------------------
+
+    Docs : http://socket.io/docs/
 
 
