@@ -3,14 +3,16 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+
 // ENV variable $PORT
 var port = process.env.PORT || 3000;
 
+// Specify port the server should listen to
 server.listen(port, function() {
     console.log('Server listening on port %d', port);
 });
 
-//Routing
+//Routing to all static files
 app.use(express.static(__dirname + '/public'));
 
 // Chatroom
@@ -19,6 +21,8 @@ var usernames = {};
 var numUsers = 0;
 
 io.on('connection', function(socket) {
+    // log it just for peace of mind
+    console.log('User connected...');
     var addedUser = false;
 
     // when the client emits 'new message', this listens and executes
@@ -28,6 +32,8 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    message: data
 	});
+	// log the new message for peace of mind
+	console.log("New message: ' %d' broadcasted", data);
     });
 
     // when the client emits 'add user', listens and execute
@@ -42,11 +48,12 @@ io.on('connection', function(socket) {
 	});
     });
 
-    // when the client emits 'stop typing', we broadcast that to others
+    // when the client stops typing, we broadcast that to others
     socket.on('stop typing', function() {
 	socket.broadcast.emit('stop typing', {
 	    username: socket.username
 	});
+	console.log(socket.username + 'stopped typing');
     });
     
     // when the user disconnects...
@@ -62,6 +69,7 @@ io.on('connection', function(socket) {
 		numUsers: numUsers
 	    });
 	}
+	console.log(socket.username + 'has lefted');
     });
 });
 

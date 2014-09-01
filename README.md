@@ -26,6 +26,10 @@ Install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/
 2. `npm install` all dependencies from `package.json` 
 3. run `node index.js` and point your browser to `http://localhost:3000`
 
+### Toy Circuit ###
+
+![Inside Furby](toy/img/diagram-01.jpg)
+
 ---------------------------------------
 
 Updates & Progress
