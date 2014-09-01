@@ -28,6 +28,15 @@ Install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/
 
 ### Toy Circuit ###
 
+On the hardware side, we'll decidedly used 
++ [Cellv1.0](http://www.sparqee.com/portfolio/sparqee-cell/) for super-easy setup
++ [Cellv1.0 Arduino Shield](http://www.sparqee.com/portfolio/sparqee-shielda/) for no-brainer arduino integration with the above
++ [Internal 4G/3G/GSM Strip Antenna](http://microcontrollershop.com/product_info.php?products_id=6008) which should be small enough to incorporate into the toy
++ [EMIC 2](http://www.parallax.com/product/30016 "EMIC 2") from Parallax for text-to-speech capability to read the stream from the chat client. A bit costly but the features are rich and there are only so many pins!
+
+**09/01/14:**
+Below is a rough sketch of what might be done. I didn't use Fritzing because it was so user-unfriendly and after a few hours trying to include my custom components I decided I would be better off doing it in AI.
+
 ![Inside Furby](toy/img/diagram-01.jpg)
 
 ---------------------------------------
@@ -49,6 +58,10 @@ Some caveats that need fixings are:
 The idea is to stream the messages from the chat through the server and broadcast to other clients, including the arduino-powered Furby without the need for a persistent database (is it possible?!)
 [Marcus Willock]("https://github.com/crazcalm") and I had a look at [Johny-five]("https://github.com/rwaldron/johnny-five") Javascript-arduino library for Nodebots. Will look into it more.
 
+**09/01/14:**
+I've spent some time last night trying to figure out a rough sketch of how the components might fit together (since they're still not delivered due to long weekend). Please check the **instruction** section for the diagram and components.
+I also checked out [Firebase](https://www.firebase.com/ "Firebase") which has a supremely simple set of APIs for getting and setting JSON datas in real-time on its storage. Perhaps that can be a good mediator on the web.
+Happy Labor Day!
 
 
 
