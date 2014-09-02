@@ -12,7 +12,8 @@ Requirements
 ------------
 
 + [Node.js](http://nodejs.org) and [Socket.io](http://socket.io)
-+ [Arduino](http://arduino.cc/ "Arduino") for the toy
++ [Firebase](https://firebase.com "Firebase") for pushing and retrieving data remotely
++ [Arduino](http://arduino.cc/ "Arduino") for the toy's main microcontroller
 + [Cellv1.0](http://www.sparqee.com/portfolio/sparqee-cell/ "Sparqee Cellv1.0") for 3G communication
 
 Instructions
@@ -22,9 +23,19 @@ Instructions
 
 Install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/ "Node Packaging Manager"), since Meteor runs on top of Node.
 
-1. cd into the `chatapp-socket.io` 
-2. `npm install` all dependencies from `package.json` 
+1. cd into the `./chatapp-socket.io` 
+2. `npm install` all dependencies from `./package.json` 
 3. run `node index.js` and point your browser to `http://localhost:3000`
+
+#### Retrieving Remote Data ####
+
+**Firebase** is included into `./chatapp-socket.io/index.js`. After running `node index.js` on the localhost, run
+
+    ```curl
+    curl https://blistering-inferno-6120.firebaseio.com/chatters/-JVrRgolJ7tCDKs5cYxQ.json
+    ```
+
+You should get back a JSON file containing the username and message.
 
 ### Toy Circuit ###
 
