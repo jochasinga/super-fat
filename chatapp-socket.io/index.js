@@ -1,3 +1,4 @@
+// Require Firebase library to interface with JSON remotely on Firebase server
 var Firebase = require('firebase');
 var express = require('express');
 
@@ -6,8 +7,16 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 
-// Declare a reference to Firebase data server
-var myFirebaseRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/");
+/* Firebase Reference */
+
+// Declare a reference to Firebase root server
+var firebaseRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/");
+// This reference the child node of the root reference
+// Another RESTful way of doing this would be
+// var chattersRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/chatters")
+var chattersRef = firebaseRef.child('chatters');
+var chatterID = '';
+
 
 // Specify port the server should listen to
 server.listen(port, function() {
@@ -34,15 +43,14 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    message: data
 	});
+	
+	var currentChatter = chatterID.name();
+	var userMsgCount = 0;
 	// Also save the object to Firebase
-	/*
-	myFirebaseRef.push({
-	    username: socket.username,
-	    message: data
-	}, function() {
-	    console.log("Synced to Firebase!");
+	var newChatterMsg = chattersRef.child(currentChatter +'/messages').push({
+	    userMsgCount: data
 	});
-	*/
+	userMsgCount++; 
     });
 
     // when the client emits 'add user', listens and execute
@@ -62,9 +70,10 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    numUsers: numUsers
 	});
-	myFirebaseRef.push({
+	
+	// Update the chatterID session for current user
+	chatterID = chattersRef.push({
 	    username: socket.username,
-	    message: 'Gibberish'
 	});
     });
 
