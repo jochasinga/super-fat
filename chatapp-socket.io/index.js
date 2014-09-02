@@ -3,8 +3,6 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-
-// ENV variable $PORT
 var port = process.env.PORT || 3000;
 
 // Specify port the server should listen to
@@ -12,7 +10,7 @@ server.listen(port, function() {
     console.log('Server listening on port %d', port);
 });
 
-//Routing to all static files
+//Routing to tatic files
 app.use(express.static(__dirname + '/public'));
 
 // Chatroom
@@ -32,12 +30,12 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    message: data
 	});
-	// log the new message for peace of mind
-	console.log("New message: ' %d' broadcasted", data);
     });
 
     // when the client emits 'add user', listens and execute
     socket.on('add user', function(username) {
+	// we store the username in the socket session for this client
+	socket.username = username;
 	// add the client's username to the global list
 	usernames[username] = username;
 	++numUsers;
@@ -46,6 +44,19 @@ io.on('connection', function(socket) {
 	   // For informing number of logged in users
 	   numUsers: numUsers 
 	});
+	// echo globally (all clients) that a uers had connected
+	socket.broadcast.emit('user joined', {
+	    username: socket.username,
+	    numUsers: numUsers
+	});
+    });
+
+    // when the client emits 'typing', broadcast it to other
+    socket.on('typing', function() {
+	socket.broadcast.emit('typing', {
+	    username: socket.username
+	});
+	console.log(socket.username + ' typing');
     });
 
     // when the client stops typing, we broadcast that to others
@@ -53,7 +64,7 @@ io.on('connection', function(socket) {
 	socket.broadcast.emit('stop typing', {
 	    username: socket.username
 	});
-	console.log(socket.username + 'stopped typing');
+	console.log(socket.username + ' stopped typing');
     });
     
     // when the user disconnects...
@@ -69,7 +80,7 @@ io.on('connection', function(socket) {
 		numUsers: numUsers
 	    });
 	}
-	console.log(socket.username + 'has lefted');
+	console.log(socket.username + ' has lefted');
     });
 });
 
