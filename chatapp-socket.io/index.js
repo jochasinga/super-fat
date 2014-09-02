@@ -17,7 +17,6 @@ var firebaseRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/"
 var chattersRef = firebaseRef.child('chatters');
 var chatterID = '';
 
-
 // Specify port the server should listen to
 server.listen(port, function() {
     console.log('Server listening on port %d', port);
@@ -43,14 +42,11 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    message: data
 	});
-	
 	var currentChatter = chatterID.name();
-	var userMsgCount = 0;
 	// Also save the object to Firebase
-	var newChatterMsg = chattersRef.child(currentChatter +'/messages').push({
-	    userMsgCount: data
+	var newChatterMsg = chattersRef.child(currentChatter).update({
+	    message: data
 	});
-	userMsgCount++; 
     });
 
     // when the client emits 'add user', listens and execute
@@ -74,6 +70,7 @@ io.on('connection', function(socket) {
 	// Update the chatterID session for current user
 	chatterID = chattersRef.push({
 	    username: socket.username,
+	    message: ''
 	});
     });
 
