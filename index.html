@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Super-fat by jochasinga</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Super-fat</h1>
+          <h2>Code for &quot;Super Fat&quot; Toy Project </h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jochasinga/super-fat/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jochasinga/super-fat/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jochasinga/super-fat" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="super-fat-furby-chat-client" class="anchor" href="#super-fat-furby-chat-client"><span class="octicon octicon-link"></span></a>Super Fat: Furby Chat Client</h1>
+
+<p>This repository is dedicated to the code for "Super Fat" Toy Project to be presented and exhibited at the Makerfaire NY on September 20-21, 2014. Contributions are super-appreciated and contributors will definitely be mentioned.</p>
+
+<h2>
+<a name="project-description" class="anchor" href="#project-description"><span class="octicon octicon-link"></span></a>Project Description</h2>
+
+<p><em>Super Fat</em> is an speculative attempt to treat a toy object as a "fat" web chat client as opposed to the "thin" web client in the usual MVC paradigm. By being "fat" it simply means that more computing is moved into the client from the server or cloud, and by being "super fat" is actually making that computing physical.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>
+<a href="http://nodejs.org">Node.js</a> and <a href="http://socket.io">Socket.io</a>
+</li>
+<li>
+<a href="http://arduino.cc/" title="Arduino">Arduino</a> for the toy</li>
+<li>
+<a href="http://www.sparqee.com/portfolio/sparqee-cell/" title="Sparqee Cellv1.0">Cellv1.0</a> for 3G communication</li>
+</ul><h2>
+<a name="instructions" class="anchor" href="#instructions"><span class="octicon octicon-link"></span></a>Instructions</h2>
+
+<h3>
+<a name="chat-app" class="anchor" href="#chat-app"><span class="octicon octicon-link"></span></a>Chat App</h3>
+
+<p>Install <a href="http://nodejs.org/" title="Node.js">Node.js</a> and <a href="https://www.npmjs.org/" title="Node Packaging Manager">NPM</a>, since Meteor runs on top of Node.</p>
+
+<ol>
+<li>cd into the <code>chatapp-socket.io</code> </li>
+<li>
+<code>npm install</code> all dependencies from <code>package.json</code> </li>
+<li>run <code>node index.js</code> and point your browser to <code>http://localhost:3000</code>
+</li>
+</ol><h3>
+<a name="toy-circuit" class="anchor" href="#toy-circuit"><span class="octicon octicon-link"></span></a>Toy Circuit</h3>
+
+<p>On the hardware side, we'll decidedly used </p>
+
+<ul>
+<li>
+<a href="http://www.sparqee.com/portfolio/sparqee-cell/">Cellv1.0</a> for super-easy setup</li>
+<li>
+<a href="http://www.sparqee.com/portfolio/sparqee-shielda/">Cellv1.0 Arduino Shield</a> for no-brainer arduino integration with the above</li>
+<li>
+<a href="http://microcontrollershop.com/product_info.php?products_id=6008">Internal 4G/3G/GSM Strip Antenna</a> which should be small enough to incorporate into the toy</li>
+<li>
+<a href="http://www.parallax.com/product/30016" title="EMIC 2">EMIC 2</a> from Parallax for text-to-speech capability to read the stream from the chat client. A bit costly but the features are rich and there are only so many pins!</li>
+</ul><p><strong>09/01/14:</strong>
+Below is a rough sketch of what might be done. I didn't use Fritzing because it was so user-unfriendly and after a few hours trying to include my custom components I decided I would be better off doing it in AI.</p>
+
+<p><img src="toy/img/diagram-01.jpg" alt="Inside Furby"></p>
+
+<hr><h2>
+<a name="updates--progress" class="anchor" href="#updates--progress"><span class="octicon octicon-link"></span></a>Updates &amp; Progress</h2>
+
+<p><strong>08/28/14:</strong>
+After two days catching up, I decided to leave <strong>Famo.us</strong> out of this project unless there's time left to implement it to other mobile devices. It's a shame but the chat client is just a part of this project, and the most important thing is the <em>proof of concept</em> and MVP.</p>
+
+<p><strong>08/29/14:</strong>
+The chat app is done (pretty) much. Plan is to get rid of all the routes and make it single-paged with the chat box right on the home page for easy demo. I have  done some studies on Meteor's DDP (Distributed Data Protocol). It's simple JSON I/O. Wonder if that could be easy enough to communicate with the Arduino.</p>
+
+<p><strong>08/31/14:</strong>
+I decided to redo a much simpler chat client with Socket.io. Since next week it'll be more on the hardware side, so I decide it's the best not to look back to Meteor.js. 
+Some caveats that need fixings are:</p>
+
+<ul>
+<li>Inresponsiveness of the chatbox on horizontal browser resize.</li>
+<li>When run on <code>localhost:3000</code>, only one user is allowed to logged in. Once I logged in from another browser (or another tab) on the same computer, my last session just logged out.
+The idea is to stream the messages from the chat through the server and broadcast to other clients, including the arduino-powered Furby without the need for a persistent database (is it possible?!)
+Marcus Willock and I had a look at Johny-five Javascript-arduino library for Nodebots. Will look into it more.</li>
+</ul><p><strong>09/01/14:</strong>
+I've spent some time last night trying to figure out a rough sketch of how the components might fit together (since they're still not delivered due to long weekend). Please check the <strong>instruction</strong> section for the diagram and components.
+I also checked out <a href="https://www.firebase.com/" title="Firebase">Firebase</a> which has a supremely simple set of APIs for getting and setting JSON datas in real-time on its storage. Perhaps that can be a good mediator on the web.
+Happy Labor Day!</p>
+        </section>
+
+        <footer>
+          Super-fat is maintained by <a href="https://github.com/jochasinga">jochasinga</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
