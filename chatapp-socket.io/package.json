@@ -1,7 +1,7 @@
 {
   "name": "SuperFatFurbyChat",
   "version": "0.1.0",
-  "description": "A simple socket.io chat client to communicate with an arduino-powered Furby",
+  "description": "A simple chat client to communicate with an arduino-powered Furby",
   "main": "app.js",
   "author": "Joe Chasinga",
   "private": true,
