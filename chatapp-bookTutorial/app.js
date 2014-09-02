@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//Socket iop code
+//Socket io code
 var activeClients = 0;
 
 // on connection
@@ -77,6 +77,11 @@ io.sockets.on('connection', function(socket){
   socket.on('disconnect', function(data){
     activeClients--;
     io.sockets.emit('message', {clients: activeClients});
+  });
+
+  // new chat received
+  socket.on('newchat', function(data) {
+    io.sockets.emit('chat', data);
   });
 });
 

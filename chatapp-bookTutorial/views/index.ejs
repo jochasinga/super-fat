@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheet/style.css'>
+    <title>!!!BETA!!!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
   <body>
     <h1>
-      <%=title%>
+      !!!BETA!!!
     </h1>
     <p>
-      Welcome to <%= title%>
+      Welcome to !!!BETA!!!
     </p>
 
+
+<!-- Will remove p tag when I confirm that the changes work.-->
     <p id="client-count">
       Hello???
     </p>
+
+    <div id="chatroom">
+      <form method="post" class="chatbox">
+        <input type="text" name="message" id="message">
+        <input type="submit" value="Send" onClick="Chat.submit()" id="sendMessage">
+      </form>
+
+      <p>
+        Connected users: <span id="client-count">0</span>
+      </p>
+    </div>
   </body>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/javascripts/main/main.js"></script>
 </html>
