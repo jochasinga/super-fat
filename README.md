@@ -31,7 +31,7 @@ Install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/
 
 **Firebase** is included into `./chatapp-socket.io/index.js`. After running `node index.js` on the localhost, run
 
-    ```bash
+    ```
     curl https://blistering-inferno-6120.firebaseio.com/chatters/-JVrRgolJ7tCDKs5cYxQ.json
     ```
 
