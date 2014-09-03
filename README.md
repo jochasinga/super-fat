@@ -19,25 +19,27 @@ Requirements
 Instructions
 ------------
 
-### Chat App ###
+### Starting Chat App ###
 
-Install [Node.js](http://nodejs.org/ "Node.js") and [NPM](https://www.npmjs.org/ "Node Packaging Manager"), since Meteor runs on top of Node.
+Install [Node.js](http://nodejs.org/ "Node.js"), which should come with [Node Package Manager](https://www.npmjs.org/ "NPM"). Please install globally so you both `chatapp-socket.io` and `toy` can see it.
 
-1. cd into the `./chatapp-socket.io` 
-2. `npm install` all dependencies from `./package.json` 
-3. run `node index.js` and point your browser to `http://localhost:3000`
+1. `cd chatapp-socket.io` 
+2. `npm install` all dependencies from `package.json` 
+3. run `node index.js`. The chat app should be on `http://localhost:8000`
 
-#### Retrieving Remote Data ####
+####  Retrieving Remote Data ####
 
-**Firebase** is included into `./chatapp-socket.io/index.js`. After running `node index.js` on the localhost, run
+After running `node index.js`, from another terminal, run
 
 ```bash
-curl https://blistering-inferno-6120.firebaseio.com/chatters/-JVrRgolJ7tCDKs5cYxQ.json
+curl https://blistering-inferno-6120.firebaseio.com/chatters.json
 ```
 
-You should get back a JSON file containing the username and message.
+You should get back a JSON file containing the test users and messages on the server.
 
 ### Toy Circuit ###
+
+#### Requirements ####
 
 On the hardware side, we'll decidedly used 
 + [Cellv1.0](http://www.sparqee.com/portfolio/sparqee-cell/) for super-easy setup
@@ -45,10 +47,22 @@ On the hardware side, we'll decidedly used
 + [Internal 4G/3G/GSM Strip Antenna](http://microcontrollershop.com/product_info.php?products_id=6008) which should be small enough to incorporate into the toy
 + [EMIC 2](http://www.parallax.com/product/30016 "EMIC 2") from Parallax for text-to-speech capability to read the stream from the chat client. A bit costly but the features are rich and there are only so many pins!
 
-**09/01/14:**
-Below is a rough sketch of what might be done. I didn't use Fritzing because it was so user-unfriendly and after a few hours trying to include my custom components I decided I would be better off doing it in AI.
+Below is a rough sketch of what might be included. 
 
 ![Inside Furby](toy/img/diagram-01.jpg)
+
+#### Retrieving Remote Data ####
+
+We will test retrieving remote data from the Firebase server with a motor connected to an arduino uno. 
+
+1. cd into `toy/`, open up `StandardFirmata.ino` with the Arduino IDE.
+2. Connect your arduino board, select the right board and serial port.
+3. Upload the code onto the board. Upon success, close the IDE. Firmata is successfully uploaded.
+4. `cd toy/example` and install dependencies `npm install`. This will install Firebase and Johny-five
+5. `cd toy/img/motor` and use the diagram to connect a simple motor circuit.
+6. `cd toy/example` and run `node motor.js`
+
+Now, when you log into the chat client on port 8000, the motor will fire for every new message you type.
 
 ---------------------------------------
 
