@@ -1,0 +1,13 @@
+{
+  "name": "SuperFatFurby",
+  "version": "0.1.0",
+  "description": "A simple javascript firmata interface to communicate with Furby Chat client",
+  "main": "app.js",
+  "author": "Joe Chasinga",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^1.0.21",
+    "johnny-five": "~0.7.3"
+  }
+}
