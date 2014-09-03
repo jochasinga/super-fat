@@ -55,11 +55,13 @@ Below is a rough sketch of what might be done. I didn't use Fritzing because it 
 Updates & Progress
 ------------------
 
-**08/28/14:**
-After two days catching up, I decided to leave **Famo.us** out of this project unless there's time left to implement it to other mobile devices. It's a shame but the chat client is just a part of this project, and the most important thing is the _proof of concept_ and MVP.
+**09/03/14:**
+17 More days to go! I tested some example codes for [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") from [Anna Gerber's repo](https://github.com/AnnaGerber/node-ardx "Nodebot Experimenter Kit") and I was pleased to learn that it's very simple to get data change from **Firebase** to trigger the arduino in real-time! I was running the chat client from *port 8000* and a piezo code on *port 3000* and with every chat message it sang.
 
-**08/29/14:**
-The chat app is done (pretty) much. Plan is to get rid of all the routes and make it single-paged with the chat box right on the home page for easy demo. I have  done some studies on Meteor's DDP (Distributed Data Protocol). It's simple JSON I/O. Wonder if that could be easy enough to communicate with the Arduino.
+**09/01/14:**
+I've spent some time last night trying to figure out a rough sketch of how the components might fit together (since they're still not delivered due to long weekend). Please check the **instruction** section for the diagram and components.
+I also checked out [Firebase](https://www.firebase.com/ "Firebase") which has a supremely simple set of APIs for getting and setting JSON datas in real-time on its storage. Perhaps that can be a good mediator on the web.
+Happy Labor Day!
 
 **08/31/14:**
 I decided to redo a much simpler chat client with Socket.io. Since next week it'll be more on the hardware side, so I decide it's the best not to look back to Meteor.js. 
@@ -67,12 +69,15 @@ Some caveats that need fixings are:
 + Inresponsiveness of the chatbox on horizontal browser resize.
 + When run on `localhost:3000`, only one user is allowed to logged in. Once I logged in from another browser (or another tab) on the same computer, my last session just logged out.
 The idea is to stream the messages from the chat through the server and broadcast to other clients, including the arduino-powered Furby without the need for a persistent database (is it possible?!)
-[Marcus Willock]("https://github.com/crazcalm") and I had a look at [Johny-five]("https://github.com/rwaldron/johnny-five") Javascript-arduino library for Nodebots. Will look into it more.
+[Marcus Willock](https://github.com/crazcalm "crazcalm") and I had a look at [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") Javascript-arduino library for Nodebots. Will look into it more.
 
-**09/01/14:**
-I've spent some time last night trying to figure out a rough sketch of how the components might fit together (since they're still not delivered due to long weekend). Please check the **instruction** section for the diagram and components.
-I also checked out [Firebase](https://www.firebase.com/ "Firebase") which has a supremely simple set of APIs for getting and setting JSON datas in real-time on its storage. Perhaps that can be a good mediator on the web.
-Happy Labor Day!
+**08/29/14:**
+The chat app is done (pretty) much. Plan is to get rid of all the routes and make it single-paged with the chat box right on the home page for easy demo. I have  done some studies on Meteor's DDP (Distributed Data Protocol). It's simple JSON I/O. Wonder if that could be easy enough to communicate with the Arduino.
+
+**08/28/14:**
+After two days catching up, I decided to leave **Famo.us** out of this project unless there's time left to implement it to other mobile devices. It's a shame but the chat client is just a part of this project, and the most important thing is the _proof of concept_ and MVP.
+
+
 
 
 
