@@ -8,7 +8,7 @@ var SETUP = {
   };
 
 var socket;
-var Chat = {};
+//Chat = {} || Chat;
 
 Chat.init = function(setup) {
 
@@ -20,12 +20,25 @@ Chat.init = function(setup) {
     setup.dom.count.text(data.clients);
   });
 
+  // initialize the collection and views
+  Chat.messages = new Chat.Messages();
+
+// Error in my views!
+//  Chat.messagesViews = new Chat.MessagesView({
+//    collection: Chat.messages
+//  });
+
   // bind submit for chat box
   setup.dom.form.submit(Chat.submit);
 
   //handle new chats
   Chat.$chatroom = setup.dom.room;
-  socket.on('chat', Chat.printChat);
+  socket.on('chat', Chat.addMessage);
+};
+
+// add a new message to the chat room
+Chat.addMessage = function(data) {
+  Chat.messages.add(data);
 };
 
 Chat.submit = function() {
