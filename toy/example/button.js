@@ -9,7 +9,8 @@ five.Board().on("ready", function() {
   button = new five.Button({
     
     //pin: 2,  // for tummy button
-    pin: 4,    // for back button
+    //pin: 4,  // for back button
+    pin: 7,    // for tilt switch
     invert: true
   });
 
@@ -20,12 +21,14 @@ five.Board().on("ready", function() {
   button.on("down", function() {
     console.log('button pressed');
     led.on();
+    /*
     createFurby = firebaseRef.push({
 	username: "Furby",
 	message: "GIGGGGGGGGLE!"
     });
+    */
   });
-
+  
   button.on("up", function() {
     console.log('button released');
     led.off();

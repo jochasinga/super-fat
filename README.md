@@ -88,13 +88,17 @@ Now the code will still push every new instance of Furby chatter to the Firebase
 
 I have commented out the Firebase push code for microphone, since it will need some work to calibrate properly and not pushing data to the server every time it detects the slightest sound.
 
+**Tilt Switch**
+
+Furby's tilt switch is a roller-ball type, SPDT. When the Furby is turned upside-down, the ball roll back to form a short. The button code works just the same with this tilt switch. (Unless we are to program its normal position to doing something, perhaps to stop yelling?)
+
 ---------------------------------------
 
 Updates & Progress
 ------------------
 
 **09/04/14:**
-Just created simple data syncing with the Furby's motor and push button. The chat app is a bit hacked and broken, so I'll get into it today. Things like welcome message and numUsers can be omitted for simplicity (less things to break). [palaa159](https://github.com/palaa159 "Apon")suggested [Spark.io](http://spark.io/ "Spark board") instead of the arduino. It is so small, arduino-like and comes with its own RESTful cloud. We'll see tomorrow if it's painful to transfer.
+Just created simple data syncing with the Furby's motor and push button. The chat app is a bit hacked and broken, so I'll get into it today. Things like welcome message and numUsers can be omitted for simplicity (less things to break). [palaa159](https://github.com/palaa159 "Apon") suggested [Spark.io](http://spark.io/ "Spark board") instead of the arduino. It is so small, arduino-like and comes with its own RESTful cloud. We'll see tomorrow if it's painful to transfer.
 
 **09/03/14:**
 17 More days to go! I tested some example codes for [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") from [Anna Gerber's repo](https://github.com/AnnaGerber/node-ardx "Nodebot Experimenter Kit") and I was pleased to learn that it's very simple to get data change from **Firebase** to trigger the arduino in real-time! I was running the chat client from *port 8000* and a piezo code on *port 3000* and with every chat message it sang.
@@ -110,7 +114,7 @@ Some caveats that need fixings are:
 + Inresponsiveness of the chatbox on horizontal browser resize.
 + When run on `localhost:3000`, only one user is allowed to logged in. Once I logged in from another browser (or another tab) on the same computer, my last session just logged out.
 The idea is to stream the messages from the chat through the server and broadcast to other clients, including the arduino-powered Furby without the need for a persistent database (is it possible?!)
-[Marcus Willock](https://github.com/crazcalm "crazcalm") and I had a look at [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") Javascript-arduino library for Nodebots. Will look into it more.
+[crazcalm](https://github.com/crazcalm "Marcus Willock") and I had a look at [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") Javascript-arduino library for Nodebots. Will look into it more.
 
 **08/29/14:**
 The chat app is done (pretty) much. Plan is to get rid of all the routes and make it single-paged with the chat box right on the home page for easy demo. I have  done some studies on Meteor's DDP (Distributed Data Protocol). It's simple JSON I/O. Wonder if that could be easy enough to communicate with the Arduino.
