@@ -23,10 +23,10 @@ Chat.init = function(setup) {
   // initialize the collection and views
   Chat.messages = new Chat.Messages();
 
-// Error in my views!
-//  Chat.messagesViews = new Chat.MessagesView({
-//    collection: Chat.messages
-//  });
+ //Error in my views!
+  Chat.messagesViews = new Chat.MessagesView({
+    collection: Chat.messages
+  });
 
   // bind submit for chat box
   setup.dom.form.submit(Chat.submit);

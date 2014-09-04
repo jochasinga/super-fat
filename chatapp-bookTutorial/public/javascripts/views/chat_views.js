@@ -17,11 +17,11 @@ Chat.MessageView = Backbone.View.extend({
 // Parent View
 Chat.MessagesView = Backbone.View.extend({
 
-  $el: "#chatroom",
+  $el: $("#chatroom"),
 
   initialize: function() {
     // bind "this" context to the render function
-    _.bind(this, 'render');
+    _.bindAll(this, 'render');
 
     // register event handlers on the collection
     this.collection.on('change', this.render);
@@ -30,6 +30,9 @@ Chat.MessagesView = Backbone.View.extend({
 
     // render the initial state
     this.render();
+
+    //debugging
+    console.log(this);
 
     //debugging
     console.log("Parent view initialize ran\n\n")
@@ -59,6 +62,9 @@ Chat.MessagesView = Backbone.View.extend({
     // render it
     messageView.render()
   }, this);
+
+  //debugging
+  console.log(this);
 
   //scroll to the bottom
   this.$el.animate({ scrollTop: this.$el.height()}, 100);
