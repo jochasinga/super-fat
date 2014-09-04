@@ -53,21 +53,40 @@ Below is a rough sketch of what might be included.
 
 #### Retrieving Remote Data ####
 
-We will test retrieving remote data from the Firebase server with a motor connected to an arduino uno. 
+**Upload Firmata and Node Dependencies**
+
+Johny-five relies on Firmata library, so...
 
 1. cd into `toy/`, open up `StandardFirmata.ino` with the Arduino IDE.
 2. Connect your arduino board, select the right board and serial port.
 3. Upload the code onto the board. Upon success, close the IDE. Firmata is successfully uploaded.
-4. `cd toy/example` and install dependencies `npm install`. This will install Firebase and Johny-five
-5. `cd toy/img/motor` and use the diagram to connect a simple motor circuit.
-6. `cd toy/example` and run `node motor.js`
+4. `cd toy/example` and install dependencies `npm install`. This will install Firebase and Johny-five. 
+
+Now the arduino is ready for the following
+
+**The (Furby) motor:**
+
+2. `cd toy/img/motor` and use the diagram to connect a simple motor circuit.
+3. `cd toy/example` and run `node motor.js`
 
 Now, when you log into the chat client on port 8000, the motor will fire for every new message you type.
+
+**The (Furby's tummy) push button:**
+
+Furby's tummy button is simple SPST, Normally-open type. 
+
+1. `cd toy/img/button` and use the diagram to connect a simple button circuit.
+2. `cd toy/example` and run `node button.js`
+
+When button is pressed, the chat room should be "hijacked" with a username "Furby" and message "GIGGGLE!"
 
 ---------------------------------------
 
 Updates & Progress
 ------------------
+
+**09/04/14:**
+Just created simple data syncing with the Furby's motor and push button. The chat app is a bit hacked and broken, so I'll get into it today. Things like welcome message and numUsers can be omitted for simplicity (less things to break). [palaa159](https://github.com/palaa159 "Apon")suggested [Spark.io](http://spark.io/ "Spark board") instead of the arduino. It is so small, arduino-like and comes with its own RESTful cloud. We'll see tomorrow if it's painful to transfer.
 
 **09/03/14:**
 17 More days to go! I tested some example codes for [Johny-five](https://github.com/rwaldron/johnny-five "Johny-five") from [Anna Gerber's repo](https://github.com/AnnaGerber/node-ardx "Nodebot Experimenter Kit") and I was pleased to learn that it's very simple to get data change from **Firebase** to trigger the arduino in real-time! I was running the chat client from *port 8000* and a piezo code on *port 3000* and with every chat message it sang.
