@@ -15,7 +15,7 @@ var firebaseRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/"
 // Another RESTful way of doing this would be
 // var chattersRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/chatters")
 var chattersRef = firebaseRef.child('chatters');
-var chatterID = '';
+var chatterID;
 
 // Specify port the server should listen to
 server.listen(port, function() {
@@ -35,6 +35,41 @@ io.on('connection', function(socket) {
     console.log('User connected...');
     var addedUser = false;
 
+    // for Furby conversation from the other side
+    chattersRef.on('child_added', function(snapshot) {
+	
+	var username = snapshot.val() ? snapshot.val().username : "";
+	var message = snapshot.val() ? snapshot.val().message : "";
+
+	if (username === "Furby") {
+	    console.log("Furby is here");
+	    //socket.username = username
+	    usernames[username] = username;
+	    //++numUsers;
+	    addedUser = true;
+	    /*
+	    socket.emit('login', {
+		// For informing number of logged in users
+		numUsers: numUsers 
+	    });
+	    */
+	    /*
+	    // echo globally (all clients) that a user had connected
+	    socket.broadcast.emit('user joined', {
+	    username: socket.username,
+	    numUsers: numUsers
+	    });
+	    */
+	    socket.broadcast.emit('new message', {
+		username: username,
+		message: message
+	    });
+
+	} else {
+	    console.log("Something wrong. Go fix");
+	}
+    });
+
     // when the client emits 'new message', this listens and executes
     socket.on('new message', function(data) {
 	// tell the client to execute 'new message' event
@@ -42,8 +77,8 @@ io.on('connection', function(socket) {
 	    username: socket.username,
 	    message: data
 	});
+	// Update data and save to database
 	var currentChatter = chatterID.name();
-	// Also save the object to Firebase
 	var newChatterMsg = chattersRef.child(currentChatter).update({
 	    message: data
 	});
