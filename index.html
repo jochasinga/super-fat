@@ -3,50 +3,35 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640">
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <title>Super-fat: Furby Chat Client by jochasinga</title>
   </head>
 
   <body>
-    <a id="forkme_banner" href="https://github.com/jochasinga/super-fat">View on GitHub</a>
-    <div class="shell">
+    <div id="container">
+      <div class="inner">
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Super-fat: Furby Chat Client</h1>
-            <h2>Super Fat is a physical &quot;fat&quot; interactive client baked into an old Furby toy</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+        <header>
+          <h1>Super-fat: Furby Chat Client</h1>
+          <h2>Super Fat is a physical &quot;fat&quot; interactive client baked into an old Furby toy</h2>
+        </header>
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/jochasinga/super-fat/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/jochasinga/super-fat/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jochasinga/super-fat/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jochasinga/super-fat/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jochasinga/super-fat" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
+        <hr>
 
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
-        <h1>
+        <section id="main_content">
+          <h1>
 <a name="super-fat-furby-chat-client" class="anchor" href="#super-fat-furby-chat-client"><span class="octicon octicon-link"></span></a>Super Fat: Furby Chat Client</h1>
 
 <p>This repository is dedicated to the code for "Super Fat" Toy Project to be presented and exhibited at the Makerfaire NY on September 20-21, 2014. Contributions are super-appreciated and contributors will definitely be mentioned.</p>
@@ -113,7 +98,7 @@
 <a href="http://www.parallax.com/product/30016" title="EMIC 2">EMIC 2</a> from Parallax for text-to-speech capability to read the stream from the chat client. A bit costly but the features are rich and there are only so many pins!</li>
 </ul><p>Below is a rough sketch of what might be included. </p>
 
-<p><a href="http://i.imgur.com/1Png31G.jpg">Imgur</a></p>
+<p><img src="http://imgur.com/1Png31G" alt="Rough diagram of hardwares"></p>
 
 <h4>
 <a name="retrieving-remote-data-1" class="anchor" href="#retrieving-remote-data-1"><span class="octicon octicon-link"></span></a>Retrieving Remote Data</h4>
@@ -191,22 +176,15 @@ The chat app is done (pretty) much. Plan is to get rid of all the routes and mak
 
 <p><strong>08/28/14:</strong>
 After two days catching up, I decided to leave <strong>Famo.us</strong> out of this project unless there's time left to implement it to other mobile devices. It's a shame but the chat client is just a part of this project, and the most important thing is the <em>proof of concept</em> and MVP.</p>
-      </section>
+        </section>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/jochasinga">jochasinga</a> can be found on <a href="https://github.com/jochasinga/super-fat">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
+        <footer>
+          Super-fat: Furby Chat Client is maintained by <a href="https://github.com/jochasinga">jochasinga</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
 
+        
+      </div>
     </div>
-
-    
   </body>
 </html>
