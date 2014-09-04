@@ -73,12 +73,20 @@ Now, when you log into the chat client on port 8000, the motor will fire for eve
 
 **The (Furby's tummy) push button:**
 
-Furby's tummy button is simple SPST, Normally-open type. 
+Furby's tummy button is simple SPST, Normally-open type. The same code can be used with the back button too.
 
 1. `cd toy/img/button` and use the diagram to connect a simple button circuit.
 2. `cd toy/example` and run `node button.js`
 
 When button is pressed, the chat room should be "hijacked" with a username "Furby" and message "GIGGGLE!"
+Now the code will still push every new instance of Furby chatter to the Firebase list instead of updating its message for the second time on.
+
+**The Microphone:**
+
+1. `cd toy/img/microphone` and use the diagram to connect a simple electret microphone on the breadboard.
+2. `cd toy/example` and run `node microphone.js`
+
+I have commented out the Firebase push code for microphone, since it will need some work to calibrate properly and not pushing data to the server every time it detects the slightest sound.
 
 ---------------------------------------
 
