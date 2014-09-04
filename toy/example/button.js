@@ -7,7 +7,9 @@ var firebaseRef = new Firebase("https://blistering-inferno-6120.firebaseio.com/c
 five.Board().on("ready", function() {
 
   button = new five.Button({
-    pin: 2,
+    
+    //pin: 2,  // for tummy button
+    pin: 4,    // for back button
     invert: true
   });
 
