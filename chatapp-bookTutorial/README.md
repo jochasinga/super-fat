@@ -14,7 +14,7 @@ npm packages used:
     express-generator
     nodemon
     ejs
-    socket.io (not used yet)
+    socket.io
     jsdocs (not used yet)
 
 Basic file Structure
@@ -54,4 +54,17 @@ Socket.io with Express 4
 
     Docs : http://socket.io/docs/
 
+
+Thoughts:
+---------
+
+    1. I think we can add another route that will allow furby to place messages
+       directly intt the socket.emit function.
+
+    2. Need to change how user input their names. The prompt blocks everything
+       while it is up.
+
+    3. I think we can use host info on the client side to differentiate furby
+       and the other users connected to the chat app. Then we can insert furby
+       logic.
 
