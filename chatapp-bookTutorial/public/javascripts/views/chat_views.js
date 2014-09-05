@@ -17,7 +17,7 @@ Chat.MessageView = Backbone.View.extend({
 // Parent View
 Chat.MessagesView = Backbone.View.extend({
 
-  $el: $("#chatroom"),
+  el: "#chatroom",
 
   initialize: function() {
     // bind "this" context to the render function
@@ -43,6 +43,8 @@ Chat.MessagesView = Backbone.View.extend({
   // Empty out the wrapper
   this.$el.empty();
 
+  var thisView = this;
+
   // loop through the messages in the collection
   this.collection.each(function(message){
 
@@ -54,16 +56,19 @@ Chat.MessagesView = Backbone.View.extend({
     });
 
     //debugging
+    console.log("messageView\n");
+    console.log(messageView);
     console.log('Child views have been made in the parent view\n\n');
 
     // Save a reference to this view within the child view
-    messageView.parentView = this;
+    messageView.parentView = thisView;
 
     // render it
-    messageView.render()
+    messageView.render();
   }, this);
 
   //debugging
+  console.log("Render has ran");
   console.log(this);
 
   //scroll to the bottom

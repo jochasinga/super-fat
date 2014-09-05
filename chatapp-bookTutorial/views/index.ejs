@@ -20,15 +20,16 @@
     </p>
 
     <div id="chatroom">
-      <form method="post" class="chatbox">
-        <input type="text" name="message" id="message">
-        <input type="submit" value="Send" onClick="Chat.submit()" id="sendMessage">
-      </form>
 
-      <p>
-        Connected users: <span id="client-count">0</span>
-      </p>
     </div>
+    <form method="post" class="chatbox">
+      <input type="text" name="message" id="message">
+      <input type="submit" value="Send" onClick="Chat.submit()" id="sendMessage">
+    </form>
+
+    <p>
+      Connected users: <span id="client-count">0</span>
+    </p>
   </body>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
