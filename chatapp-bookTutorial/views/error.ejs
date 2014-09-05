@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error Page</title>
+    <link rel='stylesheet' href='/stylesheet/style.css'>
+  </head>
+
+  <body>
+    <h1>
+      <%=message%>
+    </h1>
+
+    <h2>
+      <%= error.status%>
+    </h2>
+    <p>
+      <%= error.stack%>
+    </p>
+  </body>
+</html>

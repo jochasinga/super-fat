@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>!!!BETA!!!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+  <body>
+    <h1>
+      !!!BETA!!!
+    </h1>
+    <p>
+      Welcome to !!!BETA!!!
+    </p>
+
+    <div id="chatroom">
+
+    </div>
+    <form method="post" class="chatbox">
+      <input type="text" name="message" id="message">
+      <input type="submit" value="Send" id="sendMessage">
+    </form>
+
+    <p>
+      Connected users: <span id="client-count">0</span>
+    </p>
+  </body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/javascripts/lib/underscore.js"></script>
+  <script src="/javascripts/lib/backbone.js"></script>
+  <script src = "/javascripts/models/chat_model.js"></script>
+  <script src="/javascripts/collections/chat_collection.js"></script>
+  <script src="/javascripts/views/chat_views.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/javascripts/main/main.js"></script>
+</html>
