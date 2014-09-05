@@ -20,6 +20,9 @@ Chat.init = function(setup) {
     setup.dom.count.text(data.clients);
   });
 
+  // Get username
+  Chat.username = Chat.getUsername();
+
   // initialize the collection and views
   Chat.messages = new Chat.Messages();
 
@@ -41,6 +44,12 @@ Chat.addMessage = function(data) {
   Chat.messages.add(data);
 };
 
+// get the user's name
+Chat.getUsername = function() {
+
+  return prompt("What's your name?", '') || "Anonymous";
+};
+
 Chat.submit = function() {
   // get the text of the input and empty it
   var $message = $("#message");
@@ -49,7 +58,10 @@ Chat.submit = function() {
   $message.val("");
 
   // send the message over the socket
-  socket.emit('newchat', {text: text});
+  socket.emit('newchat', {
+    name: Chat.username,
+    text: text
+  });
 
   // This prevents the default submit settings from running (cool)
   return false;

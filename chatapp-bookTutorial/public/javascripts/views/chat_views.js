@@ -3,9 +3,12 @@ Chat.MessageView = Backbone.View.extend({
 
   tagName: "p",
 
+  template: _.template("<strong> <%=name%>: </strong> <%=text %>"),
+
   render: function() {
     // add the message text
-    this.$el.text(this.model.get("text"));
+    //this.$el.text(this.model.get("text"));
+    this.$el.html(this.template(this.model.toJSON()));
 
     // append the new message to the parent view
     this.parentView.$el.append(this.$el);
