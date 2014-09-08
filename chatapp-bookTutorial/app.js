@@ -88,6 +88,18 @@ var chatroomInit = function (messageCollection) {
   io.sockets.on('connection', function(socket){
     activeClients++;
     io.sockets.emit('message', {clients: activeClients});
+
+    // get the last ten messages from mongodb
+    messageCollection.find({}, {sort: [['_id', 'desc']], limit: 10}).
+    toArray(function(err, results) {
+      // loops through the results in reverse order
+      var i = results.length;
+      while(i--){
+        //send each over the single sockets
+        socket.emit('chat', results[i]);
+      }
+    });
+
     console.log("Someone connected!");
 
     // on disconnect
