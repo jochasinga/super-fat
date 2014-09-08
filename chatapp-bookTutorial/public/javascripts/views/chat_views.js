@@ -3,7 +3,7 @@ Chat.MessageView = Backbone.View.extend({
 
   tagName: "p",
 
-  template: _.template("<strong> <%=name%>: </strong> <%=text %>"),
+  template: _.template("<strong> <%=name%> [<%= timestamp %>]: </strong> <%=text %>"),
 
   render: function() {
     // add the message text

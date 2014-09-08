@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -64,6 +65,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// Use to create a time stamp
+var moment = require('moment');
+
 //Socket io code
 var activeClients = 0;
 
@@ -81,6 +85,7 @@ io.sockets.on('connection', function(socket){
 
   // new chat received
   socket.on('newchat', function(data) {
+    data.timestamp = moment().format('h:mm')
     io.sockets.emit('chat', data);
   });
 });
