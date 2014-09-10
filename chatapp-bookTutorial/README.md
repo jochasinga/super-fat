@@ -15,6 +15,8 @@ npm packages used:
     nodemon
     ejs
     socket.io
+    Timestamp (not used yet)
+    mongodb (not used yet)
     jsdocs (not used yet)
 
 Basic file Structure

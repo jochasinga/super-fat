@@ -4,6 +4,18 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongodb = require('mongodb');
+
+// connect to mongodb
+var db = new mongodb.Db ("mydb", new mongodb.Server('localhost', 27017,
+  {auto_reconnect: true}), {w: 1});
+
+db.open( function(err, conn) {
+  db.collection('chatroomMessages', function(err, collection) {
+    // init the chatroomInit
+    chatroomInit(collection);
+  });
+});
 
 
 var routes = require('./routes/index');
@@ -64,26 +76,51 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//Socket io code
-var activeClients = 0;
+var chatroomInit = function (messageCollection) {
 
-// on connection
-io.sockets.on('connection', function(socket){
-  activeClients++;
-  io.sockets.emit('message', {clients: activeClients});
-  console.log("Someone connected!");
+  // Use to create a time stamp
+  var moment = require('moment');
 
-  // on disconnect
-  socket.on('disconnect', function(data){
-    activeClients--;
+  //Socket io code
+  var activeClients = 0;
+
+  // on connection
+  io.sockets.on('connection', function(socket){
+    activeClients++;
     io.sockets.emit('message', {clients: activeClients});
+
+    // get the last ten messages from mongodb
+    messageCollection.find({}, {sort: [['_id', 'desc']], limit: 10}).
+    toArray(function(err, results) {
+      // loops through the results in reverse order
+      var i = results.length;
+      while(i--){
+        //send each over the single sockets
+        socket.emit('chat', results[i]);
+      }
+    });
+
+    console.log("Someone connected!");
+
+    // on disconnect
+    socket.on('disconnect', function(data){
+      activeClients--;
+      io.sockets.emit('message', {clients: activeClients});
+    });
+
+    // new chat received
+    socket.on('newchat', function(data) {
+      data.timestamp = moment().format('h:mm')
+      io.sockets.emit('chat', data);
+
+      // save the new message to mongodb
+      messageCollection.insert(data, function(err, result) {
+        console.log(result);
+      });
+    });
   });
 
-  // new chat received
-  socket.on('newchat', function(data) {
-    io.sockets.emit('chat', data);
-  });
-});
+};
 
 //app.listen(3000);
 console.log("Express server listening on port %d", 3000);
